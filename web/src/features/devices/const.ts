@@ -1,5 +1,5 @@
 const devices = {
   room: {
-    deviceId: ""
-  }
+    deviceId: "",
+  },
 }

@@ -9,8 +9,18 @@ type Props = {
   size?: "sm" | "md"
 }
 
-export default function Button({ children, onClick, theme = "primary", size = "md" }: PropsWithChildren<Props>) {
+export default function Button({
+  children,
+  onClick,
+  theme = "primary",
+  size = "md",
+}: PropsWithChildren<Props>) {
   return (
-    <button className={`${style.button} ${themeStyle[theme]} ${style[size]}`} onClick={onClick}>{children}</button>
+    <button
+      className={`${style.button} ${themeStyle[theme]} ${style[size]}`}
+      onClick={onClick}
+    >
+      {children}
+    </button>
   )
 }

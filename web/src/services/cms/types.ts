@@ -1,25 +1,24 @@
-
 type Tags = {
-  name: string;
-  value: string;
-  color: string;
-  type: string[];
+  name: string
+  value: string
+  color: string
+  type: string[]
 }
 type Image = {
-  url: string;
+  url: string
 }
 type Banner = {
-  image:Image;
-  link: string;
-  title?: string;
-  description?: string;
+  image: Image
+  link: string
+  title?: string
+  description?: string
 }
 export type EndpointDefinitions = {
   blog: {
     Content: {
-      title: string;
-      body: string;
-      tags: Tags[];
+      title: string
+      body: string
+      tags: Tags[]
     }
   }
   tags: {
@@ -32,19 +31,19 @@ export type EndpointDefinitions = {
   }
 }
 
-export type Endpoints = keyof EndpointDefinitions;
+export type Endpoints = keyof EndpointDefinitions
 
 export type MicroCMSContentBase = {
-  id: string;
-  publishedAt: string;
-  revisedAt: string;
-  createdAt: string;
-  updatedAt: string;
+  id: string
+  publishedAt: string
+  revisedAt: string
+  createdAt: string
+  updatedAt: string
 }
 
 export type MicroCMSContentList<T> = {
-  contents: (MicroCMSContentBase & T)[];
-  totalCount: number;
-  offset: number;
-  limit: number;
+  contents: (MicroCMSContentBase & T)[]
+  totalCount: number
+  offset: number
+  limit: number
 }

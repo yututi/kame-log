@@ -9,28 +9,27 @@ type Props = {
   className?: string
 }
 
-export default function Card({ theme = "primaryContainer", style, className, children }: PropsWithChildren<Props>) {
-
+export default function Card({
+  theme = "primaryContainer",
+  style,
+  className,
+  children,
+}: PropsWithChildren<Props>) {
   return (
-    <div style={style} className={`${commonStyle.card} ${themeStyle[theme]} ${className}`}>
+    <div
+      style={style}
+      className={`${commonStyle.card} ${themeStyle[theme]} ${className}`}
+    >
       {children}
     </div>
   )
 }
 
 function CardContent({ children }: PropsWithChildren) {
-  return (
-    <div className={commonStyle.cardContent}>
-      {children}
-    </div>
-  )
+  return <div className={commonStyle.cardContent}>{children}</div>
 }
 function CardAction({ children }: PropsWithChildren) {
-  return (
-    <div className={commonStyle.cardAction}>
-      {children}
-    </div>
-  )
+  return <div className={commonStyle.cardAction}>{children}</div>
 }
 
 Card.Content = CardContent

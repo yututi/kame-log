@@ -58,7 +58,7 @@
   position: relative;
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     transition: opacity 0.3s;
@@ -68,7 +68,7 @@
 
   &:hover::after,
   &:focus-visible::after {
-    content: '';
+    content: "";
     opacity: 0.1;
   }
 }
@@ -85,5 +85,4 @@
   @include mq(md) {
     grid-template-columns: repeat(3, 1fr);
   }
-
 }

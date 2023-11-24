@@ -10,27 +10,26 @@ import Card from "@/components/Card"
 import Menu from "@/components/Menu"
 
 type Props = {
-  asWidget?: boolean;
+  asWidget?: boolean
 }
 
 export default async function BlogList({ asWidget }: Props) {
-  const data = await getList("blog", createListQuery({
-    fields: ["id", "title", "tags", "publishedAt", "revisedAt"],
-    limit: asWidget ? 4 : 10
-  }))
+  const data = await getList(
+    "blog",
+    createListQuery({
+      fields: ["id", "title", "tags", "publishedAt", "revisedAt"],
+      limit: asWidget ? 4 : 10,
+    }),
+  )
 
-  if (data.totalCount === 0) return null;
+  if (data.totalCount === 0) return null
 
   return (
     <Flex direction="column" gap={8}>
-      <h2 className={typoStyle.heading}>
-        飼育メモ
-      </h2>
+      <h2 className={typoStyle.heading}>飼育メモ</h2>
       <Menu>
-        {data.contents.map(content => (
-          <Menu.LinkItem
-            key={content.id}
-            href={`/blogs/${content.id}`}>
+        {data.contents.map((content) => (
+          <Menu.LinkItem key={content.id} href={`/blogs/${content.id}`}>
             <span className={typoStyle.body}>{content.title}</span>
           </Menu.LinkItem>
         ))}

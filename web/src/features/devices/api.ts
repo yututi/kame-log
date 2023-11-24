@@ -17,31 +17,30 @@ export const getLog = async (year: number, month: number, date: number) => {
   return {
     baskingspot,
     shelter,
-    room
+    room,
   }
 }
 
 const downloadLog = async (path: string) => {
-
   const response = await getStorage("km-capture", path)
-  if (!response) return [];
-  const [buf] = response;
-  return JSON.parse(buf.toString("utf-8")) as Log[];
+  if (!response) return []
+  const [buf] = response
+  return JSON.parse(buf.toString("utf-8")) as Log[]
 }
 
 export const getDeviceStatusByLocation = (location: Location): Promise<Log | null> => {
   const locationToDevId = {
-    "room": process.env.METER_AT_ROOM,
-    "shelter": process.env.METER_AT_SHELTER,
-    "baskingspot": process.env.METER_AT_BASKINGSPOT,
+    room: process.env.METER_AT_ROOM,
+    shelter: process.env.METER_AT_SHELTER,
+    baskingspot: process.env.METER_AT_BASKINGSPOT,
   }
-  const devId = locationToDevId[location];
-  if (!devId) return Promise.resolve(null);
-  return getDeviceStatus(devId).then(response => {
+  const devId = locationToDevId[location]
+  if (!devId) return Promise.resolve(null)
+  return getDeviceStatus(devId).then((response) => {
     return {
       temperature: response?.body.temperature,
       humidity: response?.body.humidity,
-      at: new Date().toISOString()
+      at: new Date().toISOString(),
     }
   })
 }

@@ -1,10 +1,10 @@
-export type MonitoringItem = "temperature" | "humidity";
-export type Location = "room" | "baskingspot" | "shelter";
+export type MonitoringItem = "temperature" | "humidity"
+export type Location = "room" | "baskingspot" | "shelter"
 
 export type Log = {
-  temperature?: number;
-  humidity?: number;
-  at: string;
+  temperature?: number
+  humidity?: number
+  at: string
 }
 
 export type LogResponse = {

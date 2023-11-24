@@ -1,1 +1,7 @@
-export type Theme = "primary" | "secondary" | "primaryContainer" | "secondaryContainer" | "surface" | "surfaceContainer";
+export type Theme =
+  | "primary"
+  | "secondary"
+  | "primaryContainer"
+  | "secondaryContainer"
+  | "surface"
+  | "surfaceContainer"

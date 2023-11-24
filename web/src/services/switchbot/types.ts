@@ -1,12 +1,12 @@
 export type DeviceStatusResponse = {
-  statusCode: number,
+  statusCode: number
   body: {
-    deviceId: string,
-    deviceType: string,
-    humidity: number,
-    temperature: number,
-    version: string,
+    deviceId: string
+    deviceType: string
+    humidity: number
+    temperature: number
+    version: string
     battery: number
-  },
+  }
   message: string
 }

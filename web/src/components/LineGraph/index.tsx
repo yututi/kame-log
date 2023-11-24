@@ -1,7 +1,16 @@
 "use client"
 
 import useTheme from "@/hooks/useTheme"
-import { Chart, LineController, LineElement, PointElement, CategoryScale, LinearScale, TimeScale, ChartOptions } from "chart.js"
+import {
+  Chart,
+  LineController,
+  LineElement,
+  PointElement,
+  CategoryScale,
+  LinearScale,
+  TimeScale,
+  ChartOptions,
+} from "chart.js"
 import { range } from "lodash-es"
 import { use, useEffect, useRef, useState } from "react"
 
@@ -11,7 +20,7 @@ Chart.register([
   PointElement,
   CategoryScale,
   LinearScale,
-  TimeScale
+  TimeScale,
 ])
 
 type LogRecords = { [key: string]: number }
@@ -21,8 +30,8 @@ type Props = {
     label: string
     records: LogRecords
     borderColor: {
-      light: string;
-      dark: string;
+      light: string
+      dark: string
     }
   }[]
   labels: string[]
@@ -35,45 +44,44 @@ const options: ChartOptions = {
         maxTicksLimit: 24,
       },
       grid: {
-        color: "dimgray"
-      }
+        color: "dimgray",
+      },
     },
     y: {
       // max: 40,
       // min: 0,
       ticks: {
-        stepSize: 5
+        stepSize: 5,
       },
       grid: {
-        color: "dimgray"
-      }
+        color: "dimgray",
+      },
     },
   },
   elements: {
     point: {
-      radius: 0
-    }
+      radius: 0,
+    },
   },
   animation: {
-    duration: 0
-  }
-};
+    duration: 0,
+  },
+}
 export default function LineGraph({ datasets, labels }: Props) {
-
   const ref = useRef(null)
   const theme = useTheme()
   const [chart, setChart] = useState<Chart | null>(null)
-  const [initialLabels] = useState(labels);
+  const [initialLabels] = useState(labels)
 
   useEffect(() => {
-    if (!ref.current) return;
+    if (!ref.current) return
     const chart = new Chart(ref.current, {
-      type: 'line',
+      type: "line",
       data: {
         labels: initialLabels,
-        datasets: []
+        datasets: [],
       },
-      options
+      options,
     })
     setChart(chart)
 
@@ -83,22 +91,20 @@ export default function LineGraph({ datasets, labels }: Props) {
   }, [initialLabels])
 
   useEffect(() => {
-    if (!chart) return;
+    if (!chart) return
 
-    chart.data.labels = labels;
+    chart.data.labels = labels
     chart.data.datasets = datasets.map(({ records, ...others }) => ({
       label: others.label,
       borderColor: others.borderColor[theme],
-      data: labels.map(time => {
+      data: labels.map((time) => {
         const log = records[time]
-        if (log) return log;
-        return null;
+        if (log) return log
+        return null
       }),
-    }));
+    }))
     chart.update()
-  }, [chart, datasets, labels, theme]);
+  }, [chart, datasets, labels, theme])
 
-  return (
-    <canvas ref={ref}></canvas>
-  )
+  return <canvas ref={ref}></canvas>
 }

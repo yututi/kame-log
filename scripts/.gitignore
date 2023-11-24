@@ -1,0 +1,5 @@
+.env.local
+.env.local.yml
+/node_modules/
+/.devcontainer/
+deploy.sh

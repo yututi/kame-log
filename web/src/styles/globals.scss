@@ -1,0 +1,66 @@
+@import "./color.scss";
+
+:root {
+  --primary: var(--md-sys-color-primary-light);
+  --on-primary: var(--md-sys-color-on-primary-light);
+  --primary-container: var(--md-sys-color-primary-container-light);
+  --on-primary-container: var(--md-sys-color-on-primary-container-light);
+  --secondary: var(--md-sys-color-secondary-light);
+  --on-secondary: var(--md-sys-color-on-secondary-light);
+  --secondary-container: var(--md-sys-color-secondary-container-light);
+  --on-secondary-container: var(--md-sys-color-on-secondary-container-light);
+  --background: var(--md-sys-color-background-light);
+  --on-background: var(--md-sys-color-on-background-light);
+  --surface: var(--md-sys-color-surface-light);
+  --on-surface: var(--md-sys-color-on-surface-light);
+  --surface-container: var(--md-sys-color-surface-container-light);
+  --on-surface-container: var(--md-sys-color-on-surface-container-light);
+
+
+  /* この幅に全てのコンテンツを収める */
+  --container-width: 900px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary: var(--md-sys-color-primary-dark);
+    --on-primary: var(--md-sys-color-on-primary-dark);
+    --primary-container: var(--md-sys-color-primary-container-dark);
+    --on-primary-container: var(--md-sys-color-on-primary-container-dark);
+    --secondary: var(--md-sys-color-secondary-dark);
+    --on-secondary: var(--md-sys-color-on-secondary-dark);
+    --secondary-container: var(--md-sys-color-secondary-container-dark);
+    --on-secondary-container: var(--md-sys-color-on-secondary-container-dark);
+    --background: var(--md-sys-color-background-dark);
+    --on-background: var(--md-sys-color-on-background-dark);
+    --surface: var(--md-sys-color-surface-dark);
+    --on-surface: var(--md-sys-color-on-surface-dark);
+    --surface-container: var(--md-sys-color-surface-container-dark);
+    --on-surface-container: var(--md-sys-color-on-surface-container-dark);
+
+  }
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: "游ゴシック", "Hiragino Sans", "メイリオ";
+  color: var(--on-background);
+  background-color: var(--background);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/* @media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+} */

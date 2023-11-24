@@ -1,0 +1,12 @@
+@import "@/styles/breakpoints.scss";
+@import "@/styles/mixin.scss";
+
+.header {
+  position: relative;
+  width: 100%;
+  height: 200px;
+
+  @include mq(md) {
+    height: 300px;
+  }
+}

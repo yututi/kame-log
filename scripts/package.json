@@ -1,0 +1,23 @@
+{
+  "name": "scripts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.mjs",
+  "scripts": {
+    "WoIO": "env-cmd -f .env.local node ./switchbot/getWoIOSensor.mjs",
+    "start": "env-cmd -f .env.local npx functions-framework --target=capture --signature-type=cloudevent",
+    "lint": "eslint 'index.mjs'"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "env-cmd": "^10.1.0",
+    "eslint": "^8.54.0"
+  },
+  "type": "module",
+  "dependencies": {
+    "@google-cloud/functions-framework": "^3.3.0",
+    "@google-cloud/storage": "^7.6.0",
+    "dayjs": "^1.11.10"
+  }
+}

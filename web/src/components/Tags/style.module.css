@@ -1,0 +1,15 @@
+.tags {
+  display: flex;
+  gap: 8px;
+}
+
+.tagItem {
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  line-height: 20px;
+  border-radius: 8px;
+  padding: 6px 12px;
+  background-color: var(--primary);
+  color: var(--on-primary);
+}

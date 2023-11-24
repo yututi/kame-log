@@ -1,0 +1,5 @@
+const devices = {
+  room: {
+    deviceId: ""
+  }
+}

@@ -1,0 +1,15 @@
+cloud storageに温度情報を書き込み続ける
+
+任意のバケットに{dirname}/YYYYMMDD.jsonファイルを生成
+
+### format
+```
+[
+  {
+    temperature?: number;
+    humidity?: number;
+    at: string; // ISOformat datetime
+  },
+  ...
+]
+```

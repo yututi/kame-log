@@ -1,0 +1,89 @@
+@import "@/styles/breakpoints.scss";
+@import "@/styles/mixin.scss";
+
+.card {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.cardContent {
+  padding: 16px;
+}
+
+.cardAction {
+  padding: 0 8px 8px 8px;
+  text-align: right;
+}
+
+.list {
+  padding: 8px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style: none;
+}
+
+.iconButton {
+  border: none;
+  background-color: transparent;
+  padding: 8px;
+  font-size: 0;
+}
+
+.icon {
+  font-size: 24px;
+  line-height: 1;
+  width: 1em;
+  height: 1em;
+}
+
+.button {
+  min-width: 64px;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  padding: 6px 16px;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.button.sm {
+  padding: 4px 10px;
+  font-size: 13px;
+  line-height: 23px;
+}
+
+.highlight {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transition: opacity 0.3s;
+    background: currentColor;
+    opacity: 0;
+  }
+
+  &:hover::after,
+  &:focus-visible::after {
+    content: '';
+    opacity: 0.1;
+  }
+}
+
+.threeColumns {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 8px;
+
+  @include mq(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mq(md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+}

@@ -1,0 +1,68 @@
+@import "@/styles/breakpoints.scss";
+@import "@/styles/mixin.scss";
+@import "@/styles/common.module.scss";
+
+.bannerCard {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: background-color 0.3s;
+  overflow: hidden;
+
+  &:focus-visible,
+  &:hover {
+    background-color: var(--highlight);
+    outline: none;
+  }
+}
+
+.bannerImage {
+  flex: 1;
+  transition: opacity 0.2s linear 0s;
+  position: relative;
+}
+
+.bannerCardDescription {
+  padding: 16px;
+}
+
+.swiper {
+  height: 322px;
+  padding: 0 0 32px 0;
+  --swiper-pagination-bottom: 0px;
+  --swiper-pagination-bullet-size: 12px;
+  --swiper-theme-color: var(--primary);
+  --swiper-pagination-bullet-border-radius: 999px;
+  --swiper-pagination-bullet-width: 12px;
+
+  :global {
+    .swiper-pagination-bullet-active {
+      --swiper-pagination-bullet-width: 24px;
+    }
+  }
+
+  max-width: 500px;
+  overflow: hidden;
+
+  @include mq(md) {
+    max-width: 100%;
+  }
+}
+
+.slide {
+  position: relative;
+  width: calc(100%);
+  background-color: var(--primary-container);
+  border-radius: 8px;
+  overflow: hidden;
+
+  @include mq(md) {
+
+    &:not(:first-of-type) {
+      margin-left: 16px;
+    }
+
+    width: calc(50% - 8px);
+  }
+
+}

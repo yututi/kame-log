@@ -1,15 +1,10 @@
 import { Storage } from '@google-cloud/storage'
-let credentials
-if (process.env.GOOGLE_SERVICE_KEY) {
-  credentials = JSON.parse(
-    Buffer.from(process.env.GOOGLE_SERVICE_KEY, 'base64').toString().replace(/\n/g, ''),
-  )
-}
+
 const storage = new Storage({
   projectId: 'kame',
   credentials: {
-    client_email: credentials.client_email,
-    private_key: credentials.private_key,
+    client_email: process.env.GOOGLE_CLIENT_EMAIL,
+    private_key: process.env.GOOGLE_PRIVATE_KEY,
   },
 })
 

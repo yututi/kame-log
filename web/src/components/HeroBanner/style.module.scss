@@ -1,6 +1,6 @@
-@import "@/styles/breakpoints.scss";
-@import "@/styles/mixin.scss";
-@import "@/styles/common.module.scss";
+@import '@/styles/breakpoints.scss';
+@import '@/styles/mixin.scss';
+@import '@/styles/common.module.scss';
 
 .bannerCard {
   display: flex;
@@ -58,9 +58,9 @@
 
   @include mq(md) {
     &:not(:first-of-type) {
-      margin-left: 16px;
+      margin-left: var(--gutter-size);
     }
 
-    width: calc(50% - 8px);
+    width: calc(50% - var(--gutter-size) / 2);
   }
 }

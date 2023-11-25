@@ -1,15 +1,15 @@
-"use client"
+'use client'
 
-import "swiper/css"
-import "swiper/css/pagination"
-import Image from "next/image"
-import styles from "./style.module.scss"
-import theme from "@/styles/theme.module.scss"
-import commonStyles from "@/styles/common.module.scss"
-import { useState } from "react"
-import { Swiper, SwiperSlide } from "swiper/react"
-import Link from "next/link"
-import { Autoplay, Pagination } from "swiper/modules"
+import 'swiper/css'
+import 'swiper/css/pagination'
+import Image from 'next/image'
+import styles from './style.module.scss'
+import theme from '@/styles/theme.module.scss'
+import commonStyles from '@/styles/common.module.scss'
+import { useState } from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import Link from 'next/link'
+import { Autoplay, Pagination } from 'swiper/modules'
 
 type Banner = {
   src: string
@@ -26,7 +26,7 @@ export default function HeroBanner(props: Props) {
   return (
     <Swiper
       modules={[Autoplay, Pagination]}
-      slidesPerView="auto"
+      slidesPerView='auto'
       centeredSlidesBounds
       // autoplay
       pagination
@@ -50,11 +50,11 @@ function BannerImage({ value }: { value: Banner }) {
     >
       <div className={styles.bannerImage} style={{ opacity: isLoaded ? 1 : 0 }}>
         <Image
-          sizes="(max-width: 768px) 100vw, 50vw"
+          sizes='(max-width: 768px) 100vw, 50vw'
           src={value.src}
-          alt={value.title || "banner image"}
+          alt={value.title || 'banner image'}
           style={{
-            objectFit: "cover",
+            objectFit: 'cover',
           }}
           fill
           onLoad={() => setIsLoaded(true)}

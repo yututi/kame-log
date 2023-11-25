@@ -1,5 +1,3 @@
-import { cache } from "react"
-
 /**
  * getリクエストのみ対応
  * リクエストの重複排除と同じinputに対するレスポンスの使い回しを行う

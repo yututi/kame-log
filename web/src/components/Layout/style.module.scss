@@ -1,0 +1,18 @@
+@import '@/styles/breakpoints.scss';
+@import '@/styles/mixin.scss';
+
+.layout {
+  position: relative;
+
+  padding-bottom: var(--nav-bar-height);
+
+  @include mq(md) {
+    padding-bottom: 0px;
+    padding-left: var(--nav-rail-width);
+  }
+}
+
+.body {
+  max-width: var(--container-width);
+  margin: auto;
+}

@@ -1,4 +1,4 @@
-@import "./color.scss";
+@import './color.scss';
 
 :root {
   --primary: var(--md-sys-color-primary-light);
@@ -7,6 +7,7 @@
   --on-primary-container: var(--md-sys-color-on-primary-container-light);
   --secondary: var(--md-sys-color-secondary-light);
   --on-secondary: var(--md-sys-color-on-secondary-light);
+  --secondary-fixed: var(--md-sys-color-secondary-fixed-light);
   --secondary-container: var(--md-sys-color-secondary-container-light);
   --on-secondary-container: var(--md-sys-color-on-secondary-container-light);
   --background: var(--md-sys-color-background-light);
@@ -18,6 +19,11 @@
 
   /* この幅に全てのコンテンツを収める */
   --container-width: 900px;
+
+  --gutter-size: 8px;
+  --nav-rail-width: 80px;
+  --nav-bar-height: 80px;
+  --shape-md: 8px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -28,6 +34,7 @@
     --on-primary-container: var(--md-sys-color-on-primary-container-dark);
     --secondary: var(--md-sys-color-secondary-dark);
     --on-secondary: var(--md-sys-color-on-secondary-dark);
+    --secondary-fixed: var(--md-sys-color-secondary-fixed-dark);
     --secondary-container: var(--md-sys-color-secondary-container-dark);
     --on-secondary-container: var(--md-sys-color-on-secondary-container-dark);
     --background: var(--md-sys-color-background-dark);
@@ -43,7 +50,7 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  font-family: "游ゴシック", "Hiragino Sans", "メイリオ";
+  font-family: '游ゴシック', 'Hiragino Sans', 'メイリオ';
   color: var(--on-background);
   background-color: var(--background);
 }

@@ -1,10 +1,13 @@
-@import "@/styles/breakpoints.scss";
-@import "@/styles/mixin.scss";
+@import '@/styles/breakpoints.scss';
+@import '@/styles/mixin.scss';
 
 .header {
   position: relative;
   width: 100%;
   height: 200px;
+  border-radius: var(--shape-md);
+  overflow: hidden;
+  color: white;
 
   @include mq(md) {
     height: 300px;

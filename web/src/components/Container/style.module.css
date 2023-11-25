@@ -1,6 +1,6 @@
 .container {
-  padding: 8px 24px;
+  padding: var(--gutter-size);
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--gutter-size);
 }

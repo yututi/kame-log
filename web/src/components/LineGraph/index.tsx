@@ -1,6 +1,6 @@
-"use client"
+'use client'
 
-import useTheme from "@/hooks/useTheme"
+import useTheme from '@/hooks/useTheme'
 import {
   Chart,
   LineController,
@@ -10,9 +10,9 @@ import {
   LinearScale,
   TimeScale,
   ChartOptions,
-} from "chart.js"
-import { range } from "lodash-es"
-import { use, useEffect, useRef, useState } from "react"
+} from 'chart.js'
+import { use, useEffect, useRef, useState } from 'react'
+import styles from './style.module.scss'
 
 Chart.register([
   LineController,
@@ -44,7 +44,7 @@ const options: ChartOptions = {
         maxTicksLimit: 24,
       },
       grid: {
-        color: "dimgray",
+        color: 'dimgray',
       },
     },
     y: {
@@ -54,7 +54,7 @@ const options: ChartOptions = {
         stepSize: 5,
       },
       grid: {
-        color: "dimgray",
+        color: 'dimgray',
       },
     },
   },
@@ -66,6 +66,7 @@ const options: ChartOptions = {
   animation: {
     duration: 0,
   },
+  // maintainAspectRatio: false,
 }
 export default function LineGraph({ datasets, labels }: Props) {
   const ref = useRef(null)
@@ -76,7 +77,7 @@ export default function LineGraph({ datasets, labels }: Props) {
   useEffect(() => {
     if (!ref.current) return
     const chart = new Chart(ref.current, {
-      type: "line",
+      type: 'line',
       data: {
         labels: initialLabels,
         datasets: [],
@@ -106,5 +107,9 @@ export default function LineGraph({ datasets, labels }: Props) {
     chart.update()
   }, [chart, datasets, labels, theme])
 
-  return <canvas ref={ref}></canvas>
+  return (
+    <div className={styles.canvasWrapper}>
+      <canvas ref={ref}></canvas>
+    </div>
+  )
 }

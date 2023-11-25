@@ -1,14 +1,26 @@
-import Container from "@/components/Container"
-import { get } from "@/services/cms/client"
+import { get } from '@/services/cms/client'
+import Head from 'next/head'
+import markdown from '@/styles/markdown.module.scss'
 
-export default async function Blog({ contentId }: { contentId: string }) {
-  const data = await get("blog", contentId)
+type Props = {
+  contentId: string
+}
+
+export default async function Blog({ contentId }: Props) {
+  const data = await get('blog', contentId)
 
   return (
-    <section
-      dangerouslySetInnerHTML={{
-        __html: data.body,
-      }}
-    />
+    <>
+      <Head>
+        <title>{data.title}</title>
+      </Head>
+      <h1>{data.title}</h1>
+      <section
+        className={markdown.markdown}
+        dangerouslySetInnerHTML={{
+          __html: data.body,
+        }}
+      />
+    </>
   )
 }

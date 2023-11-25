@@ -1,9 +1,3 @@
-type Tags = {
-  name: string
-  value: string
-  color: string
-  type: string[]
-}
 type Image = {
   url: string
 }
@@ -18,15 +12,24 @@ export type EndpointDefinitions = {
     Content: {
       title: string
       body: string
-      tags: Tags[]
+      tags: string[]
+      metaDescription: string
+      keywords: string
     }
-  }
-  tags: {
-    Content: Tags
   }
   config: {
     Content: {
       heroBanners: Banner[]
+    }
+  }
+  memo: {
+    Content: {
+      at: string
+      memo: string
+      feeds: {
+        name: string
+        intake: string
+      }[]
     }
   }
 }

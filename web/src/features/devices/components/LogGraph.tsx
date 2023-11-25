@@ -1,30 +1,34 @@
-"use client"
+'use client'
 
-import LineGraph from "@/components/LineGraph"
-import dayjs from "dayjs"
-import { range } from "lodash-es"
-import useFetch from "@/hooks/useFetch"
-import { Log, LogResponse, MonitoringItem, Location } from "../types"
-import { useMemo, useState } from "react"
-import Flex from "@/components/Flex"
-import Button from "@/components/Button"
-import Sheet from "@/components/Sheet"
+import dynamic from 'next/dynamic'
+import dayjs from 'dayjs'
+import { range } from 'lodash-es'
+import useFetch from '@/hooks/useFetch'
+import { Log, LogResponse, MonitoringItem, Location } from '../types'
+import { useMemo, useState } from 'react'
+import Flex from '@/components/Flex'
+import Button from '@/components/Button'
+import commonStyle from '@/styles/common.module.scss'
+
+const LineGraph = dynamic(() => import('@/components/LineGraph'), {
+  ssr: false,
+})
 
 const labels = range(0, 24)
   .map((h) => range(0, 6).map((m) => `${h}:${m}0`))
   .flat()
 
-const allLocations: Location[] = ["baskingspot", "shelter", "room"]
+const allLocations: Location[] = ['baskingspot', 'shelter', 'room']
 
 type Props = {
   initialItem?: MonitoringItem
 }
 
-export default function LogGraph({ initialItem = "temperature" }: Props) {
+export default function LogGraph({ initialItem = 'temperature' }: Props) {
   const [date, setDate] = useState(dayjs().hour(0).minute(0).second(0).millisecond(0))
   const log = useFetch<LogResponse>(
     `/api/logs?${new URLSearchParams({
-      date: date.format("YYYY-MM-DD"),
+      date: date.format('YYYY-MM-DD'),
     })}`,
   )
 
@@ -37,37 +41,37 @@ export default function LogGraph({ initialItem = "temperature" }: Props) {
   )
 
   return (
-    <Flex direction="column">
-      <Sheet>
+    <Flex direction='column'>
+      <Flex gap={8} className={commonStyle.sheet}>
         <Button
           onClick={() => {
-            setDate(date.subtract(1, "day"))
+            setDate(date.subtract(1, 'day'))
           }}
         >
           前の日
         </Button>
         <Button
           onClick={() => {
-            setDate(date.add(1, "day"))
+            setDate(date.add(1, 'day'))
           }}
         >
           次の日
         </Button>
         <Button
           onClick={() => {
-            setMonitoringItem("temperature")
+            setMonitoringItem('temperature')
           }}
         >
           温度
         </Button>
         <Button
           onClick={() => {
-            setMonitoringItem("humidity")
+            setMonitoringItem('humidity')
           }}
         >
           湿度
         </Button>
-      </Sheet>
+      </Flex>
       <LineGraph datasets={datasets} labels={labels} />
     </Flex>
   )
@@ -80,24 +84,24 @@ const composeDatasets = (
 ) => {
   const options = {
     room: {
-      label: "部屋",
+      label: '部屋',
       color: {
-        light: "gray",
-        dark: "gray",
+        light: 'gray',
+        dark: 'gray',
       },
     },
     baskingspot: {
-      label: "バスキングスポット",
+      label: 'バスキングスポット',
       color: {
-        light: "orange",
-        dark: "orange",
+        light: 'orange',
+        dark: 'orange',
       },
     },
     shelter: {
-      label: "シェルター",
+      label: 'シェルター',
       color: {
-        light: "lightblue",
-        dark: "lightblue",
+        light: 'lightblue',
+        dark: 'lightblue',
       },
     },
   }
@@ -109,11 +113,11 @@ const composeDatasets = (
   }))
 }
 
-const toRecord = (logs: Log[], field: "temperature" | "humidity") => {
+const toRecord = (logs: Log[], field: 'temperature' | 'humidity') => {
   return logs.reduce<{ [key: string]: number }>((all, log) => {
     const value = log[field]
     if (value == null) return all
-    const key = dayjs(log.at).format("H:mm")
+    const key = dayjs(log.at).format('H:mm')
     all[key] = value
     return all
   }, {})

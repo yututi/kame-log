@@ -1,0 +1,57 @@
+@import '@/styles/breakpoints.scss';
+@import '@/styles/mixin.scss';
+
+.nav {
+  position: fixed;
+  z-index: 1;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 12px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  height: var(--nav-bar-height);
+  padding: 12px 8px 16px 8px;
+  background-color: var(--surface-container);
+  color: var(--on-surface-container);
+
+  @include mq(md) {
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 12px;
+    right: auto;
+    top: 0px;
+    height: 100lvh;
+    padding: 12px 0;
+    width: var(--nav-rail-width);
+    background-color: var(--surface-container);
+    color: var(--on-surface-container);
+  }
+}
+
+.nav.active {
+  @include mq(md) {
+    width: 360px;
+  }
+}
+
+.navItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  color: var(--primary);
+  width: 64px;
+  border-radius: 8px;
+  font-size: 12px;
+
+  @include mq(md) {
+    height: 56px;
+  }
+
+  svg {
+    margin: 4px 0;
+  }
+}

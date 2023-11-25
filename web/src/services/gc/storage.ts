@@ -6,7 +6,11 @@ if (process.env.GOOGLE_SERVICE_KEY) {
   )
 }
 const storage = new Storage({
-  credentials,
+  projectId: 'kame',
+  credentials: {
+    client_email: credentials.client_email,
+    private_key: credentials.private_key,
+  },
 })
 
 export const get = async (bucketName: string, path: string) => {

@@ -1,12 +1,16 @@
 import { Storage } from '@google-cloud/storage'
 
-const storage = new Storage({
-  projectId: 'kame',
-  credentials: {
-    client_email: process.env.GOOGLE_CLIENT_EMAIL,
-    private_key: process.env.GOOGLE_PRIVATE_KEY?.split(String.raw`\n`).join('\n'),
-  },
-})
+const storage = new Storage(
+  process.env.NODE_ENV === 'production'
+    ? {
+        projectId: 'kame',
+        credentials: {
+          client_email: process.env.GOOGLE_CLIENT_EMAIL,
+          private_key: process.env.GOOGLE_PRIVATE_KEY?.split(String.raw`\n`).join('\n'),
+        },
+      }
+    : undefined,
+)
 
 export const get = async (bucketName: string, path: string) => {
   const bucket = storage.bucket(bucketName)

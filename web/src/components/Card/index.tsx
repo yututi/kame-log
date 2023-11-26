@@ -10,7 +10,7 @@ type Props = {
 }
 
 export default function Card({
-  theme = 'primaryContainer',
+  theme = 'secondaryContainer',
   style,
   className,
   children,

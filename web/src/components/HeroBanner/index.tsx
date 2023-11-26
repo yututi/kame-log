@@ -46,7 +46,7 @@ function BannerImage({ value }: { value: Banner }) {
   return (
     <Link
       href={value.link}
-      className={`${styles.bannerCard} ${theme.primaryContainer} ${commonStyles.highlight}`}
+      className={`${styles.bannerCard} ${theme.secondaryContainer} ${commonStyles.highlight}`}
     >
       <div className={styles.bannerImage} style={{ opacity: isLoaded ? 1 : 0 }}>
         <Image

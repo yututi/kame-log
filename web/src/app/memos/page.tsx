@@ -1,9 +1,9 @@
-import Container from '@/components/Container'
-import MemoList from '@/features/memos/components/MemoList'
-import Link from 'next/link'
-import commonStyle from '@/styles/common.module.scss'
-import themeStyle from '@/styles/theme.module.scss'
-import Flex from '@/components/Flex'
+import Container from "@/components/Container"
+import MemoList from "@/features/memos/components/MemoList"
+import Link from "next/link"
+import commonStyle from "@/styles/common.module.scss"
+import themeStyle from "@/styles/theme.module.scss"
+import Flex from "@/components/Flex"
 
 export default function Blogs({
   searchParams,

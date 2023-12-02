@@ -1,11 +1,11 @@
-import Card from '@/components/Card'
-import { getList, createListQuery } from '@/services/cms/client'
-import dayjs from 'dayjs'
-import Link from 'next/link'
-import { ReadonlyURLSearchParams } from 'next/navigation'
-import commonStyle from '@/styles/common.module.scss'
-import themeStyle from '@/styles/theme.module.scss'
-import Flex from '@/components/Flex'
+import Card from "@/components/Card"
+import { getList, createListQuery } from "@/services/cms/client"
+import dayjs from "dayjs"
+import Link from "next/link"
+import { ReadonlyURLSearchParams } from "next/navigation"
+import commonStyle from "@/styles/common.module.scss"
+import themeStyle from "@/styles/theme.module.scss"
+import Flex from "@/components/Flex"
 
 type Props = {
   page?: number
@@ -13,17 +13,17 @@ type Props = {
 
 export default async function MemoList({ page = 1 }: Props) {
   const data = await getList(
-    'memo',
+    "memo",
     createListQuery({
       limit: 10,
       offset: (page - 1) * 10,
-      orders: 'at',
+      orders: "at",
     }),
   )
 
   return (
-    <Flex direction='column' gap={8}>
-      <Flex justify='space-between'>
+    <Flex direction="column" gap={8}>
+      <Flex justify="space-between">
         <Link
           className={`${commonStyle.button} ${themeStyle.primary} ${
             page === 1 && commonStyle.disabled
@@ -44,10 +44,10 @@ export default async function MemoList({ page = 1 }: Props) {
       {data.contents.map((content) => (
         <Card key={content.id}>
           <Card.Content>
-            <div>{dayjs(content.at).format('YYYY/MM/DD')}</div>
+            <div>{dayjs(content.at).format("YYYY/MM/DD")}</div>
             <div>{content.memo}</div>
             {content.feeds.length > 0 && (
-              <div>エサ: {content.feeds.map((feed) => feed.name).join(', ')}</div>
+              <div>エサ: {content.feeds.map((feed) => feed.name).join(", ")}</div>
             )}
           </Card.Content>
         </Card>

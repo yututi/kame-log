@@ -1,12 +1,12 @@
-import { Storage } from '@google-cloud/storage'
+import { Storage } from "@google-cloud/storage"
 
 const storage = new Storage(
-  process.env.NODE_ENV === 'production'
+  process.env.NODE_ENV === "production"
     ? {
-        projectId: 'kame',
+        projectId: "kame",
         credentials: {
           client_email: process.env.GOOGLE_CLIENT_EMAIL,
-          private_key: process.env.GOOGLE_PRIVATE_KEY?.split(String.raw`\n`).join('\n'),
+          private_key: process.env.GOOGLE_PRIVATE_KEY?.split(String.raw`\n`).join("\n"),
         },
       }
     : undefined,
@@ -19,6 +19,6 @@ export const get = async (bucketName: string, path: string) => {
   if (!exists) return null
 
   return await file.download({
-    decompress: file.metadata.contentEncoding === 'gzip',
+    decompress: file.metadata.contentEncoding === "gzip",
   })
 }

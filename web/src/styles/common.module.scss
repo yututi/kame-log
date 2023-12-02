@@ -1,5 +1,5 @@
-@import '@/styles/breakpoints.scss';
-@import '@/styles/mixin.scss';
+@import "@/styles/breakpoints.scss";
+@import "@/styles/mixin.scss";
 
 .card {
   border-radius: var(--shape-md);
@@ -71,7 +71,7 @@
   overflow: hidden;
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     transition: opacity 0.3s;
@@ -81,7 +81,7 @@
 
   &:hover::after,
   &:focus-visible::after {
-    content: '';
+    content: "";
     opacity: 0.2;
   }
 }

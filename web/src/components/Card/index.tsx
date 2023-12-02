@@ -1,7 +1,7 @@
-import { Theme } from '@/utils/theme'
-import themeStyle from '@/styles/theme.module.scss'
-import commonStyle from '@/styles/common.module.scss'
-import { CSSProperties, PropsWithChildren } from 'react'
+import { Theme } from "@/utils/theme"
+import themeStyle from "@/styles/theme.module.scss"
+import commonStyle from "@/styles/common.module.scss"
+import { CSSProperties, PropsWithChildren } from "react"
 
 type Props = {
   theme?: Theme
@@ -10,7 +10,7 @@ type Props = {
 }
 
 export default function Card({
-  theme = 'secondaryContainer',
+  theme = "secondaryContainer",
   style,
   className,
   children,

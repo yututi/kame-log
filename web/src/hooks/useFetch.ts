@@ -1,8 +1,6 @@
 import FetchService from "@/utils/FetchService"
 import { useEffect, useState } from "react"
 
-const cache = new Map()
-
 type GetRequestInit = Omit<RequestInit, "method">
 
 const fetchService = new FetchService()

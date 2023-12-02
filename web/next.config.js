@@ -1,5 +1,5 @@
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true",
 })
 
 /** @type {import('next').NextConfig} */
@@ -7,9 +7,9 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'images.microcms-assets.io',
-        port: '',
+        protocol: "https",
+        hostname: "images.microcms-assets.io",
+        port: "",
       },
     ],
     deviceSizes: [640, 1080, 2048],

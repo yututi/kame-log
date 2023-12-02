@@ -1,9 +1,9 @@
-import { FontAwesomeIcon, FontAwesomeIconProps } from '@fortawesome/react-fontawesome'
-import styles from './style.module.scss'
-import commonStyle from '@/styles/common.module.scss'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import Link from 'next/link'
-import { PropsWithChildren } from 'react'
+import { FontAwesomeIcon, FontAwesomeIconProps } from "@fortawesome/react-fontawesome"
+import styles from "./style.module.scss"
+import commonStyle from "@/styles/common.module.scss"
+import { IconProp } from "@fortawesome/fontawesome-svg-core"
+import Link from "next/link"
+import { PropsWithChildren } from "react"
 
 type Props = {
   active?: boolean
@@ -36,7 +36,7 @@ Nav.Item = function NavItem(props: ItemProps) {
     </>
   )
 
-  if ('onClick' in props) {
+  if ("onClick" in props) {
     return (
       <button onClick={props.onClick} className={styles.navItem}>
         {inner}

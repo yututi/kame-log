@@ -1,12 +1,12 @@
-import { get as getStorage } from '@/services/gc/storage'
-import { Log, Location } from './types'
-import { getDeviceStatus } from '@/services/switchbot/client'
+import { get as getStorage } from "@/services/gc/storage"
+import { Log, Location } from "./types"
+import { getDeviceStatus } from "@/services/switchbot/client"
 
 /**
  * 指定日のログを取得する。timezoneはUTC
  */
 export const getLog = async (year: number, month: number, date: number) => {
-  const lpad = (val: number) => String(val).padStart(2, '0')
+  const lpad = (val: number) => String(val).padStart(2, "0")
   const filename = `${year}${lpad(month)}${lpad(date)}.json`
 
   const [baskingspot, shelter, room] = await Promise.all([
@@ -23,10 +23,10 @@ export const getLog = async (year: number, month: number, date: number) => {
 }
 
 const downloadLog = async (path: string) => {
-  const response = await getStorage('km-capture', path)
+  const response = await getStorage("km-capture", path)
   if (!response) return []
   const [buf] = response
-  return JSON.parse(buf.toString('utf-8')) as Log[]
+  return JSON.parse(buf.toString("utf-8")) as Log[]
 }
 
 export const getDeviceStatusByLocation = (location: Location): Promise<Log | null> => {

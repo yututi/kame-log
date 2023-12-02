@@ -1,11 +1,11 @@
-import { FC, PropsWithChildren } from 'react'
-import commonStyle from '@/styles/common.module.scss'
-import style from './style.module.scss'
-import themeStyle from '@/styles/theme.module.scss'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Link from 'next/link'
-import { faGithub } from '@fortawesome/free-brands-svg-icons'
-import Nav from '../Nav'
+import { FC, PropsWithChildren } from "react"
+import commonStyle from "@/styles/common.module.scss"
+import style from "./style.module.scss"
+import themeStyle from "@/styles/theme.module.scss"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import Link from "next/link"
+import { faGithub } from "@fortawesome/free-brands-svg-icons"
+import Nav from "../Nav"
 
 export default function Layout({ children }: PropsWithChildren) {
   return (

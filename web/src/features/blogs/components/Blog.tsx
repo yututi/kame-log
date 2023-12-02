@@ -1,13 +1,13 @@
-import { get } from '@/services/cms/client'
-import Head from 'next/head'
-import markdown from '@/styles/markdown.module.scss'
+import { get } from "@/services/cms/client"
+import Head from "next/head"
+import markdown from "@/styles/markdown.module.scss"
 
 type Props = {
   contentId: string
 }
 
 export default async function Blog({ contentId }: Props) {
-  const data = await get('blog', contentId)
+  const data = await get("blog", contentId)
 
   return (
     <>

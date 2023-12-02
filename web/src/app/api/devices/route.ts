@@ -1,6 +1,5 @@
 import { getDeviceStatusByLocation, getLog } from "@/features/devices/api"
 import { Location } from "@/features/devices/types"
-import { getDeviceStatus } from "@/services/switchbot/client"
 import { NextResponse } from "next/server"
 
 const cache = new Map()

@@ -7,15 +7,13 @@ import useFetch from '@/hooks/useFetch'
 import { Log, LogResponse, MonitoringItem, Location } from '../types'
 import { useMemo, useState } from 'react'
 import Flex from '@/components/Flex'
-import Button from '@/components/Button'
 import commonStyle from '@/styles/common.module.scss'
 import Checkbox from '@/components/Checkbox'
 import Card from '@/components/Card'
 import DateSelector from '@/components/DateSelector'
 import Radio from '@/components/Radio'
 import typograhy from '@/styles/typography.module.scss'
-import ProgressCircle from '@/components/ProgressCircle'
-import Backdrop from '@/components/Backdrop'
+import useDate from '@/hooks/useDate'
 
 const LineGraph = dynamic(() => import('@/components/LineGraph'), {
   ssr: false,
@@ -32,11 +30,12 @@ type Props = {
 }
 
 export default function LogGraph({ initialItem = 'temperature' }: Props) {
-  const [date, setDate] = useState(dayjs().hour(0).minute(0).second(0).millisecond(0))
+  const [date, setDate] = useDate(dayjs().hour(0).minute(0).second(0).millisecond(0))
   const { response: log, isLoading } = useFetch<LogResponse>(
-    `/api/logs?${new URLSearchParams({
-      date: date.format('YYYY-MM-DD'),
-    })}`,
+    date &&
+      `/api/logs?${new URLSearchParams({
+        date: date.format('YYYY-MM-DD'),
+      })}`,
   )
 
   const [monitoringItem, setMonitoringItem] = useState<MonitoringItem>(initialItem)
@@ -119,7 +118,7 @@ export default function LogGraph({ initialItem = 'temperature' }: Props) {
         </Card>
         <Card>
           <Card.Content>
-            <DateSelector initialDate={date} onChange={setDate} />
+            <DateSelector date={date} onChange={setDate} />
           </Card.Content>
         </Card>
       </div>

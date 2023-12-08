@@ -6,16 +6,14 @@ import styles from './style.module.scss'
 import typography from '@/styles/typography.module.scss'
 
 type Props = {
-  initialDate: Dayjs
+  date?: Dayjs
   onChange?: (date: Dayjs) => void
 }
 
-export default function DateSelector({ initialDate, onChange }: Props) {
-  const [date, setDate] = useState(initialDate)
-
+export default function DateSelector({ date, onChange }: Props) {
   const createOnChangeDate = (delta: number) => () => {
+    if (!date) return
     const newValue = date.date(date.date() + delta)
-    setDate(newValue)
     onChange?.(newValue)
   }
 
@@ -26,7 +24,7 @@ export default function DateSelector({ initialDate, onChange }: Props) {
         <Button onClick={createOnChangeDate(1)}>Next</Button>
       </Flex>
       <div className={`${styles.dateLabel} ${typography.heading}`}>
-        {date.format('YYYY/MM/DD')}
+        {date?.format('YYYY/MM/DD')}
       </div>
     </div>
   )

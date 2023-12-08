@@ -1,6 +1,6 @@
-"use client"
+'use client'
 
-import useTheme from "@/hooks/useTheme"
+import useTheme from '@/hooks/useTheme'
 import {
   Chart,
   LineController,
@@ -10,9 +10,11 @@ import {
   LinearScale,
   TimeScale,
   ChartOptions,
-} from "chart.js"
-import { use, useEffect, useRef, useState } from "react"
-import styles from "./style.module.scss"
+} from 'chart.js'
+import { use, useEffect, useRef, useState } from 'react'
+import styles from './style.module.scss'
+import Backdrop from '../Backdrop'
+import ProgressCircle from '../ProgressCircle'
 
 Chart.register([
   LineController,
@@ -35,6 +37,7 @@ type Props = {
     }
   }[]
   labels: string[]
+  isLoading?: boolean
 }
 const options: ChartOptions = {
   responsive: true,
@@ -44,7 +47,7 @@ const options: ChartOptions = {
         maxTicksLimit: 24,
       },
       grid: {
-        color: "dimgray",
+        color: 'dimgray',
       },
     },
     y: {
@@ -54,7 +57,7 @@ const options: ChartOptions = {
         stepSize: 5,
       },
       grid: {
-        color: "dimgray",
+        color: 'dimgray',
       },
     },
   },
@@ -68,7 +71,7 @@ const options: ChartOptions = {
   },
   // maintainAspectRatio: false,
 }
-export default function LineGraph({ datasets, labels }: Props) {
+export default function LineGraph({ datasets, labels, isLoading }: Props) {
   const ref = useRef(null)
   const theme = useTheme()
   const [chart, setChart] = useState<Chart | null>(null)
@@ -77,7 +80,7 @@ export default function LineGraph({ datasets, labels }: Props) {
   useEffect(() => {
     if (!ref.current) return
     const chart = new Chart(ref.current, {
-      type: "line",
+      type: 'line',
       data: {
         labels: initialLabels,
         datasets: [],
@@ -110,6 +113,11 @@ export default function LineGraph({ datasets, labels }: Props) {
   return (
     <div className={styles.canvasWrapper}>
       <canvas ref={ref}></canvas>
+      {isLoading && (
+        <Backdrop absolute>
+          <ProgressCircle />
+        </Backdrop>
+      )}
     </div>
   )
 }

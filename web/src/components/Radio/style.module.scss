@@ -1,0 +1,43 @@
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  padding: 8px;
+  border-radius: 999%;
+  cursor: pointer;
+}
+.radio {
+  padding: 0px;
+  display: grid;
+  place-items: center;
+  background-color: transparent;
+  border: 2px solid var(--checkbox);
+  border-radius: 999%;
+  height: 24px;
+  width: 24px;
+}
+.radio::after {
+  content: '';
+  border-radius: 999%;
+  height: 14px;
+  width: 14px;
+  background-color: transparent;
+  transition: background-color 0.2s;
+}
+.checked::after {
+  background-color: var(--checkbox);
+}
+.primary {
+  --checkbox: var(--primary);
+  --on-checkbox: var(--on-primary);
+}
+.input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+.icon {
+  color: var(--on-checkbox);
+  transition: opacity 0.2s;
+  width: 1em;
+  height: 1em;
+}

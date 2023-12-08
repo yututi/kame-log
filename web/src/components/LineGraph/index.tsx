@@ -51,8 +51,6 @@ const options: ChartOptions = {
       },
     },
     y: {
-      // max: 40,
-      // min: 0,
       ticks: {
         stepSize: 5,
       },
@@ -69,7 +67,6 @@ const options: ChartOptions = {
   animation: {
     duration: 0,
   },
-  // maintainAspectRatio: false,
 }
 export default function LineGraph({ datasets, labels, isLoading }: Props) {
   const ref = useRef(null)
@@ -77,6 +74,7 @@ export default function LineGraph({ datasets, labels, isLoading }: Props) {
   const [chart, setChart] = useState<Chart | null>(null)
   const [initialLabels] = useState(labels)
 
+  // init chartjs
   useEffect(() => {
     if (!ref.current) return
     const chart = new Chart(ref.current, {
@@ -94,6 +92,7 @@ export default function LineGraph({ datasets, labels, isLoading }: Props) {
     }
   }, [initialLabels])
 
+  // update chartjs
   useEffect(() => {
     if (!chart) return
 

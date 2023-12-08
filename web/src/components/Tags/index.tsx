@@ -1,6 +1,5 @@
-import { PropsWithChildren } from "react"
-import styles from "./style.module.css"
-import commonStyles from "@/styles/common.module.scss"
+import { PropsWithChildren } from 'react'
+import styles from './style.module.css'
 
 function Tags({ children }: PropsWithChildren) {
   return <ul className={styles.tags}>{children}</ul>

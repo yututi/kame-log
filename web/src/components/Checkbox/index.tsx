@@ -2,23 +2,14 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styles from './style.module.scss'
 import { Theme } from '@/utils/theme'
-import { useState } from 'react'
-import commonStyles from '@/styles/common.module.scss'
 
 type Props = {
   id?: string
-  defaultChecked?: boolean
+  checked?: boolean
   onChange?: (checked: boolean) => void
   theme?: Theme
 }
-export default function Checkbox({
-  id,
-  defaultChecked,
-  onChange,
-  theme = 'primary',
-}: Props) {
-  const [checked, setChecked] = useState(defaultChecked)
-
+export default function Checkbox({ id, checked, onChange, theme = 'primary' }: Props) {
   return (
     <span className={`${styles.wrapper}`}>
       <div className={`${styles.checkbox} ${styles[theme]} ${checked && styles.checked}`}>
@@ -35,7 +26,6 @@ export default function Checkbox({
         checked={checked}
         onChange={(e) => {
           const newValue = !checked
-          setChecked(newValue)
           onChange?.(newValue)
         }}
       />

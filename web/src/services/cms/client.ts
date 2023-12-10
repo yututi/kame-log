@@ -1,24 +1,24 @@
-import { isSSR } from "@/utils"
-import { URLSearchParams } from "url"
+import { isSSR } from '@/utils'
+import { URLSearchParams } from 'url'
 import {
   EndpointDefinitions,
   Endpoints,
   MicroCMSContentBase,
   MicroCMSContentList,
-} from "./types"
+} from './types'
 
 const baseUrl = isSSR
   ? `https://${process.env.MICROCMS_SERVICE_ID}.microcms.io/api/v1`
-  : "/api/cms"
+  : '/api/cms'
 
-export const get = async <T extends Endpoints, C = EndpointDefinitions[T]["Content"]>(
+export const get = async <T extends Endpoints, C = EndpointDefinitions[T]['Content']>(
   endpoint: T,
   contentId: string,
   params?: URLSearchParams,
 ): Promise<MicroCMSContentBase & C> => {
   const res = await fetch(`${baseUrl}/${endpoint}/${contentId}/?${params?.toString()}`, {
     headers: {
-      "X-MICROCMS-API-KEY": process.env.MICROCMS_API_KEY || "",
+      'X-MICROCMS-API-KEY': process.env.MICROCMS_API_KEY || '',
     },
     next: {
       revalidate: 60 * 60 * 24,
@@ -28,13 +28,13 @@ export const get = async <T extends Endpoints, C = EndpointDefinitions[T]["Conte
   return await res.json()
 }
 
-export const getList = async <T extends Endpoints, C = EndpointDefinitions[T]["Content"]>(
+export const getList = async <T extends Endpoints, C = EndpointDefinitions[T]['Content']>(
   endpoint: T,
   params?: URLSearchParams,
 ): Promise<MicroCMSContentList<C>> => {
   const res = await fetch(`${baseUrl}/${endpoint}/?${params?.toString()}`, {
     headers: {
-      "X-MICROCMS-API-KEY": process.env.MICROCMS_API_KEY || "",
+      'X-MICROCMS-API-KEY': process.env.MICROCMS_API_KEY || '',
     },
     next: {
       revalidate: 60,
@@ -46,14 +46,17 @@ export const getList = async <T extends Endpoints, C = EndpointDefinitions[T]["C
 
 export const getObject = async <
   T extends Endpoints,
-  C = EndpointDefinitions[T]["Content"],
+  C = EndpointDefinitions[T]['Content'],
 >(
   endpoint: T,
   params?: URLSearchParams,
 ): Promise<MicroCMSContentBase & C> => {
   const res = await fetch(`${baseUrl}/${endpoint}/?${params?.toString()}`, {
     headers: {
-      "X-MICROCMS-API-KEY": process.env.MICROCMS_API_KEY || "",
+      'X-MICROCMS-API-KEY': process.env.MICROCMS_API_KEY || '',
+    },
+    next: {
+      revalidate: 60 * 60 * 24,
     },
   })
 
@@ -85,12 +88,12 @@ const convertParams = (param: any) => {
   return Object.entries(param).reduce((all, [key, value]) => {
     if (!value) return all
     if (Array.isArray(value)) {
-      all.append(key, value.join(","))
-    } else if (typeof value === "number") {
+      all.append(key, value.join(','))
+    } else if (typeof value === 'number') {
       all.append(key, String(value))
-    } else if (typeof value === "boolean") {
+    } else if (typeof value === 'boolean') {
       if (value) {
-        all.append(key, "true")
+        all.append(key, 'true')
       }
     }
     return all

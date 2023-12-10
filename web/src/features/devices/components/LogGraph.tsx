@@ -6,14 +6,13 @@ import { range } from 'lodash-es'
 import useFetch from '@/hooks/useFetch'
 import { Log, LogResponse, MonitoringItem, Location } from '../types'
 import { useMemo, useState } from 'react'
-import Flex from '@/components/Flex'
 import commonStyle from '@/styles/common.module.scss'
-import Checkbox from '@/components/Checkbox'
 import Card from '@/components/Card'
 import DateSelector from '@/components/DateSelector'
-import Radio from '@/components/Radio'
 import typograhy from '@/styles/typography.module.scss'
 import useDate from '@/hooks/useDate'
+import RadioGroup from '@/components/RadioGroup'
+import CheckboxGroup from '@/components/CheckboxGroup'
 
 const LineGraph = dynamic(() => import('@/components/LineGraph'), {
   ssr: false,
@@ -46,74 +45,49 @@ export default function LogGraph({ initialItem = 'temperature' }: Props) {
     [locations, monitoringItem, log],
   )
 
-  const createOnChange = (argLocation: Location) => (checked: boolean) => {
-    if (checked) {
-      setLocations([...locations, argLocation])
-    } else {
-      setLocations(locations.filter((location) => location !== argLocation))
-    }
-  }
-
   return (
     <>
       <div className={commonStyle.threeColumns}>
         <Card>
           <Card.Content>
-            <Flex direction='column'>
-              <h2 className={typograhy.subheading}>表示対象</h2>
-              <label htmlFor='temperature'>
-                <Radio
-                  id='temperature'
-                  name='item'
-                  onChange={(checked) => {
-                    if (checked) setMonitoringItem('temperature')
-                  }}
-                  checked={monitoringItem === 'temperature'}
-                />
-                温度
-              </label>
-              <label htmlFor='humidity'>
-                <Radio
-                  id='humidity'
-                  name='item'
-                  onChange={(checked) => {
-                    if (checked) setMonitoringItem('humidity')
-                  }}
-                  checked={monitoringItem === 'humidity'}
-                />
-                湿度
-              </label>
-            </Flex>
+            <h2 className={typograhy.subheading}>表示対象</h2>
+            <RadioGroup
+              name='item'
+              values={[
+                {
+                  label: '温度',
+                  value: 'temperature',
+                },
+                {
+                  label: '湿度',
+                  value: 'humidity',
+                },
+              ]}
+              checked={monitoringItem}
+              onChange={setMonitoringItem}
+            />
           </Card.Content>
         </Card>
         <Card>
           <Card.Content>
-            <Flex direction='column'>
-              <label htmlFor='b'>
-                <Checkbox
-                  defaultChecked={locations.includes('baskingspot')}
-                  onChange={createOnChange('baskingspot')}
-                  id='b'
-                />
-                バスキングスポット
-              </label>
-              <label htmlFor='s'>
-                <Checkbox
-                  defaultChecked={locations.includes('shelter')}
-                  onChange={createOnChange('shelter')}
-                  id='s'
-                />
-                シェルター
-              </label>
-              <label htmlFor='c'>
-                <Checkbox
-                  defaultChecked={locations.includes('room')}
-                  onChange={createOnChange('room')}
-                  id='c'
-                />
-                ケージ外
-              </label>
-            </Flex>
+            <CheckboxGroup
+              values={[
+                {
+                  label: 'バスキングスポット',
+                  value: 'baskingspot',
+                },
+                {
+                  label: 'シェルター',
+                  value: 'shelter',
+                },
+                {
+                  label: 'ケージ外',
+                  value: 'room',
+                },
+              ]}
+              checkedValues={locations}
+              onChange={setLocations}
+            />
           </Card.Content>
         </Card>
         <Card>

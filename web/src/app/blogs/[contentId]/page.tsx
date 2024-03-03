@@ -11,6 +11,8 @@ type Props = {
   contentId: string
 }
 
+export const revalidate = 3600
+
 export default async function Blogs({ params }: { params: Props }) {
   return (
     <Container>
@@ -41,4 +43,8 @@ export async function generateMetadata(
     description: data.metaDescription,
     keywords: data.keywords,
   }
+}
+
+export async function generateStaticParams() {
+  return []
 }

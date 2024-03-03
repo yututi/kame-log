@@ -6,9 +6,10 @@ import dayjs from "dayjs"
 export const revalidate = 60
 
 export default async function Page({ params: { date } }: { params: { date: string } }) {
-  console.log({ date })
-  const parsedDate = dayjs(date)
-  console.log(parsedDate.format("YYYY-MM-DD"))
-  const logs = await fetchLogs(parsedDate)
+  const logs = await fetchLogs(dayjs(date))
   return <Template date={date} logs={logs}></Template>
+}
+
+export async function generateStaticParams() {
+  return []
 }

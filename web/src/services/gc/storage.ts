@@ -1,7 +1,7 @@
 import { Storage } from "@google-cloud/storage"
 
 const storage = new Storage(
-  process.env.NODE_ENV === "production"
+  process.env.VERCEL === "1"
     ? {
         projectId: "kame",
         credentials: {

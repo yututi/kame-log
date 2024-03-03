@@ -1,12 +1,11 @@
-import Container from "@/components/Container"
-import LogGraph from "@/features/devices/components/LogGraph"
+import { fetchLogs } from "@/features/devices/api"
+import Template from "./Template"
+import dayjs from "dayjs"
 
-export const revalidate = 60 * 10
+export const revalidate = 60
 
-export default function Home() {
-  return (
-    <Container>
-      <LogGraph />
-    </Container>
-  )
+export default async function Page() {
+  const date = dayjs()
+  const logs = await fetchLogs(date)
+  return <Template date={date.format("YYYY-MM-DD")} logs={logs}></Template>
 }

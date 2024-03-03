@@ -1,6 +1,8 @@
 import { get as getStorage } from "@/services/gc/storage"
 import { Log, Location } from "./types"
 import { getDeviceStatus } from "@/services/switchbot/client"
+import { cache } from "react"
+import { Dayjs } from "dayjs"
 
 /**
  * 指定日のログを取得する。timezoneはUTC
@@ -21,6 +23,10 @@ export const getLog = async (year: number, month: number, date: number) => {
     room,
   }
 }
+
+export const fetchLogs = cache(async (date: Dayjs) => {
+  return await getLog(date.year(), date.month() + 1, date.date())
+})
 
 const downloadLog = async (path: string) => {
   const response = await getStorage("km-capture", path)

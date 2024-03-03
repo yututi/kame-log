@@ -6,7 +6,7 @@ import dayjs from "@/utils/timezonedDayjs"
 export const revalidate = 60
 
 export default async function Page({ params: { date } }: { params: { date: string } }) {
-  const logs = await fetchLogs(dayjs(date))
+  const logs = await fetchLogs(dayjs(date).tz("Asia/Tokyo"))
   return <Template date={date} logs={logs}></Template>
 }
 

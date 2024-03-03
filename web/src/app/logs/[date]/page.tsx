@@ -1,7 +1,7 @@
 import type { Dayjs } from "dayjs"
 import Template from "../Template"
 import { fetchLogs } from "@/features/devices/api"
-import dayjs from "dayjs"
+import dayjs from "@/utils/timezonedDayjs"
 
 export const revalidate = 60
 

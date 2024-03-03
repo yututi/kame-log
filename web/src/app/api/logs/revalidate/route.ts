@@ -8,7 +8,7 @@ export async function POST(request: Request) {
 
   const { date } = await request.json()
   revalidatePath(`/logs/${date}`)
-  revalidatePath(`/logs/`)
+  revalidatePath(`/logs`)
 
   return Response.json({})
 }

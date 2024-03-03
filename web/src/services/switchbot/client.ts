@@ -22,6 +22,9 @@ const createHeaders = () => {
 export const get = <T>(path: string, params?: URLSearchParams) => {
   return fetch(`https://api.switch-bot.com/v1.1/${path}?${params?.toString()}`, {
     headers: createHeaders(),
+    next: {
+      revalidate: 60,
+    },
   }).then((res) => res.json() as T | null)
 }
 

@@ -8,8 +8,8 @@ export async function POST(request: Request) {
   }
 
   const { date } = await request.json()
-  revalidatePath(`/logs/${date}`)
-  revalidatePath(`/logs`)
+  revalidatePath(`/logs/${date}`, "page")
+  revalidatePath(`/logs`, "page")
 
   return NextResponse.json({})
 }

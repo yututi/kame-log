@@ -18,6 +18,7 @@
   "dependencies": {
     "@google-cloud/functions-framework": "^3.3.0",
     "@google-cloud/storage": "^7.6.0",
-    "dayjs": "^1.11.10"
+    "dayjs": "^1.11.10",
+    "stream-shift": "^1.0.2"
   }
 }

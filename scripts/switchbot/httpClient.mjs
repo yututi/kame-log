@@ -20,8 +20,24 @@ const createHeaders = () => {
   };
 };
 
+const delay = (msec) => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, msec);
+  });
+};
+
+const fetchWithRetry = async (url, options, n = 5) => {
+  const res = await fetch(url, options);
+  console.log(`switchbot response status: ${res.status}`);
+  if (!res.ok && n > 1) {
+    await delay(500);
+    return await fetchWithRetry(url, options, n - 1);
+  }
+  return res;
+};
+
 export const get = (path, queries) => {
-  return fetch(
+  return fetchWithRetry(
     `https://api.switch-bot.com/v1.1${path}?${new URLSearchParams(
       queries
     ).toString()}`,

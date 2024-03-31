@@ -11,15 +11,13 @@ const labels = range(0, 24)
   .map((h) => range(0, 6).map((m) => `${h}:${m}0`))
   .flat()
 
-const allLocations: Location[] = ["baskingspot", "shelter", "room"]
-
 type Props = {
   monitoringItem: MonitoringItem
   locations: Location[]
   logs: LogResponse
 }
 
-export default async function LogGraph({ monitoringItem, locations, logs }: Props) {
+export default function LogGraph({ monitoringItem, locations, logs }: Props) {
   const datasets = composeDatasets(logs, monitoringItem, locations)
   return <LineGraph datasets={datasets} labels={labels} />
 }
